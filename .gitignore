@@ -36,3 +36,4 @@ bin/*
 !Resource
 
 react/node_modules/*
+logs/*
