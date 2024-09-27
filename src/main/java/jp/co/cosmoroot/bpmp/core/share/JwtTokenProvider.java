@@ -12,27 +12,35 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtTokenProvider {
 
-    private final String jwtSecret = "secretKey"; // シークレットキーを設定
     private final long jwtExpirationInMs = 3600000; // トークンの有効期限（1時間）
+    private final String jwtSecret = "yourSecretKey";
+
 
     // トークン生成メソッド
     public String createToken(String userID) {
 
+        // トークンの有効期限設定
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
+
 
         return Jwts.builder()
                 .setSubject(userID)
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
-                .signWith(SignatureAlgorithm.HS512, jwtSecret) // シークレットキーで署名
+                .signWith(SignatureAlgorithm.HS512, this.jwtSecret) // シークレットキーで署名
                 .compact();
     }
 
-    // トークンからユーザー名を取得
+    /**
+     * トークンからユーザー名を取得
+     * 
+     * @param token リクエストされたトークン
+     * @return ユーザ名
+     */
     public String getUsernameFromJWT(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(this.jwtSecret)
                 .parseClaimsJws(token)
                 .getBody();
 
@@ -48,7 +56,7 @@ public class JwtTokenProvider {
     // トークンが期限切れかどうかを確認
     private boolean isTokenExpired(String token) {
         Date expiration = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(this.jwtSecret)
                 .parseClaimsJws(token)
                 .getBody()
                 .getExpiration();

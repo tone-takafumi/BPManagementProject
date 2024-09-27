@@ -9,14 +9,23 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import jp.co.cosmoroot.bpmp.core.entity.User;
 
+/**
+ * @author cosmoroot
+ *
+ * 
+ */
 public class CustomUserDetails implements UserDetails {
 
-    private User user; // ユーザー情報のエンティティ
+    // ユーザー情報のエンティティ
+    private User user;
 
     public CustomUserDetails(User user) {
         this.user = user;
     }
 
+    /**
+     * 権限取得(エンティティからGrantedAuthority型へキャスト)
+     */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.getAuthorities().stream()
@@ -24,39 +33,51 @@ public class CustomUserDetails implements UserDetails {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * ユーザーのパスワードを返す
+     */
     @Override
     public String getPassword() {
-        // ユーザーのパスワードを返す
         return user.getPassword();
     }
 
+    /**
+     * ユーザー名を返す
+     */
     @Override
     public String getUsername() {
-        // ユーザー名を返す
         return user.getUsername();
     }
 
+    /**
+     * アカウントが期限切れでないかを返す
+     */
     @Override
     public boolean isAccountNonExpired() {
-        // アカウントが期限切れでないかを返す
-        return true;
+        return user.isAccountNonExpired();
     }
 
+    /**
+     * アカウントがロックされていないかを返す
+     */
     @Override
     public boolean isAccountNonLocked() {
-        // アカウントがロックされていないかを返す
-        return true;
+        return user.isAccountNonLocked();
     }
 
+    /**
+     * 認証情報が期限切れでないかを返す
+     */
     @Override
     public boolean isCredentialsNonExpired() {
-        // 認証情報が期限切れでないかを返す
-        return true;
+        return user.isCredentialsNonExpired();
     }
 
+    /**
+     * アカウントが有効かどうかを返す
+     */
     @Override
     public boolean isEnabled() {
-        // アカウントが有効かどうかを返す
-        return true;
+        return user.isEnabled();
     }
 }

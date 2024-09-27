@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { axiosInstance } from '../share/axiosConfig';
 
 import { Grid } from '@material-ui/core'
 
@@ -7,8 +7,13 @@ import { Grid } from '@material-ui/core'
 function Content() {
 	const [post, setPosts] = useState([])
 
+	const headers = {
+		'Authorization': "abc",
+		'Content-Type': 'application/json',
+	};
+
 	useEffect(() => {
-		axios.get('http://localhost:8080/api/companyList')
+		axiosInstance.get('http://localhost:8080/api/companyList')
 			.then(res => {
 				setPosts(res.data)
 			})

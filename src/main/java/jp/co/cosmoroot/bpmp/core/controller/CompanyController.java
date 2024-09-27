@@ -18,7 +18,7 @@ import jp.co.cosmoroot.bpmp.core.service.CompanyService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CompanyController {
 
     private static final Logger logger = LogManager.getLogger(CompanyController.class);
