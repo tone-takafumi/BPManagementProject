@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { BrowserRouter as useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
 const Login = () => {
 	const [login, setLogin] = useState({
@@ -21,8 +21,6 @@ const Login = () => {
 				withCredentials: true
 			});
 			localStorage.setItem("token", response.data);
-
-			console.log(response);
 			
 			// /content に遷移
 			navigate("/content");
