@@ -4,4 +4,5 @@ ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO authorities (id, user_id, authority)
 VALUES (1, 1, 'ROLE_USER')
-ON CONFLICT (id) DO NOTHING;
+ON CONFLICT (id) DO NOTHING
+;
