@@ -1,13 +1,18 @@
 import { useState } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import MyDialog from "../share/customDialog";
 
 const Login = () => {
 	const [login, setLogin] = useState({
 		userName: "",
 		password: "",
 	});
+
+	const [dialog, setDialog] = useState({ open: false, message: ""});
 	
+	const handleClose = () => setDialog({ open: false, message: "" });
+
 	const navigate = useNavigate();
 
 	const handleInput = (e) => {
@@ -25,19 +30,24 @@ const Login = () => {
 			// /content に遷移
 			navigate("/content");
 
-
 			// ログイン成功後、リダイレクトなど
 		} catch (error) {
-			console.error("Login failed:", error);
+			if(error.response.status === 403){
+				setDialog({open: true, message: "ユーザ名またはパスワードが違います。"});
+			}
 		}
 	};
 
 	return (
+		<div>
 			<form onSubmit={handleSubmit}>
-				<input type="text" name="userName" onChange={handleInput} />
-				<input type="password" name="password" onChange={handleInput} />
+				
+				<input type="text" name="userName" onChange={handleInput} placeholder="ユーザID" />
+				<input type="password" name="password" onChange={handleInput} placeholder="パスワード" />
 				<button type="submit">Login</button>
 			</form>
+			<MyDialog open={dialog.open} message={dialog.message} onClose={handleClose} />
+		</div>
 	);
 };
 

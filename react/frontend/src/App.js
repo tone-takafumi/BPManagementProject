@@ -30,6 +30,11 @@ function App() {
 								</PrivateRoute>
 							}
 							/>
+							<Route path="/" element={
+								<PrivateRoute>
+									<Content />
+								</PrivateRoute>
+							} />
 						</Routes>
 					</Router>
 				</Grid>
