@@ -1,0 +1,46 @@
+{
+	"loginSucceeded": {
+		"id": 1,
+		"username": "admin",
+		"password": "$2a$10$zZQmViuRUXPfDJpF8Itk1eE.E1fzEoRvGoDKT8pWnzFba6PBsRmye",
+		"email": "t_tone@cosmoroot.co.jp",
+		"enabled": true,
+		"accountNonExpired": true,
+		"accountNonLocked": true,
+		"credentialsNonExpired": true,
+		"updDate": 1728379428821,
+		"updApl": "admin",
+		"regDate": 1728379428821,
+		"regApl": "admin",
+		"version": 1,
+		"authorities": [
+			{
+				"id": 1,
+				"authority": "ROLE_ADMIN",
+				"user": null
+			}
+		]
+	},
+	"loginFailed": {
+		"id": 1,
+		"username": "admin",
+		"password": "$2a$10$zZQmViuRUXPfDJpF8Itk1eE.E1fzEoRvGoDKT8pWnzFba6PBsRmye",
+		"email": "t_tone@cosmoroot.co.jp",
+		"enabled": true,
+		"accountNonExpired": true,
+		"accountNonLocked": true,
+		"credentialsNonExpired": true,
+		"updDate": 1728379428821,
+		"updApl": "admin",
+		"regDate": 1728379428821,
+		"regApl": "admin",
+		"version": 1,
+		"authorities": [
+			{
+				"id": 1,
+				"authority": "ROLE_ADMIN",
+				"user": null
+			}
+		]
+	}
+}
