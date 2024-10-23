@@ -68,3 +68,42 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 人事構成図画面
+## テクノロジースタック
+- Spring Boot
+- React
+- postgresql
+
+# 環境構築
+### 0. DB構築(初回だけ実施) ###
+DBはpostgresql
+下記コマンド実行でDB作成
+CREATE DATABASE postgres;
+テーブル作成はSpring Bootの機能を利用して自動生成する。
+
+### 0.ソフトウェアインストール ###
+1. 必要なソフトウェアをインストールします。
+   - Java 17
+   - Node.js v20.17.0
+
+# 実行手順
+### バックエンド側
+Eclipse
+※初回のみ実行
+コンソールでBPManagementProjectまで移動
+下記コマンド実行
+mvn install
+
+メニュー→ウィンドウ→ビューの表示→Bootダッシュボードを選択
+Bootダッシュボードにてlocal→BPMManagementProjectを右クリックして(再デバッグ)
+
+### フロントエンド側
+React
+BPManagementProject\react\frontendまで移動
+
+npm installを実行　←初回のみ
+
+npm startを実行
+http://localhost:3000/loginに移動(user:user1/password:password)
+
+デバッグをしたい場合はVS CodeのRun And Debugからデバッグを実施
