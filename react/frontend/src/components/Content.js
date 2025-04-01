@@ -7,13 +7,8 @@ import { Grid } from '@material-ui/core'
 function Content() {
 	const [post, setPosts] = useState([])
 
-	const headers = {
-		'Authorization': "abc",
-		'Content-Type': 'application/json',
-	};
-
 	useEffect(() => {
-		axiosInstance.get('http://localhost:8080/api/companyList')
+		axiosInstance.get('http://localhost:8080/api/viewOrganizationChart')
 			.then(res => {
 				setPosts(res.data)
 			})

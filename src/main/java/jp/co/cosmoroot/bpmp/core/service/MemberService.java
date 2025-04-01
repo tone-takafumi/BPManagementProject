@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jp.co.cosmoroot.bpmp.core.dto.MemberDTO;
+import jp.co.cosmoroot.bpmp.core.entity.Department;
 import jp.co.cosmoroot.bpmp.core.entity.Member;
 import jp.co.cosmoroot.bpmp.core.entity.Role;
 import jp.co.cosmoroot.bpmp.core.repository.MemberRepository;
@@ -67,6 +68,9 @@ public class MemberService {
     private Member mapToEntity(MemberDTO member) {
         Member entity = new Member();
         entity.setMemberID(member.getMemberID());
+        Department department = new Department();
+        department.setDepartmentID(member.getDepartmentID());
+        entity.setParentDepartment(department);
         Role role = new Role();
         role.setRoleID(member.getRoleID());
         entity.setRole(role);

@@ -2,7 +2,6 @@ package jp.co.cosmoroot.bpmp.core.dto;
 
 import java.sql.Date;
 
-import jp.co.cosmoroot.bpmp.core.entity.Department;
 import lombok.Data;
 
 @Data
@@ -11,7 +10,7 @@ public class MemberDTO {
     private String memberID;
 
     // 部署
-    private Department parentDepartment;
+    private String departmentID;
 
     // 役職ID
     private String roleID;
